@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ quiz.title }}</h1>
+    <p>{{ quiz.description }}</p>
+
+    <h2>Questions:</h2>
+
+    <form method="POST" action="{% url 'quiz_question' quiz.id %}">
+    {% csrf_token %}
+    <ol>
+        {% for question in questions %}
+            <li>{{ question.text }}</li>
+            <ul class="alphabet">
+                {% for option in question.option_set.all %}
+                <li> <input type="radio" name="question_{{ question.id }}_answer" value="{{ option.id }}"> {{ option.text }}<br></li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+    </ol>
+    <button type="submit">Submit All Answers</button>
+    </form>
+
+    <a href="{% url 'quiz_list' %}">Back to Quiz List</a>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+<!-- <form method='post' action="{% url 'answer_question' question.id %}">
+    {% csrf_token %}
+    {% for answer in answers %}
+    <input type="radio" name="answer" value="{{ answer.id }}"> {{ answer}}<br>
+    {% endfor %}
+    <button type="submit">Submit Answer</button>
+</form> -->

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+<!-- css stylings
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}"> -->
+
+{% block content %}
+<div class="contain">
+   <h3 class="header">{{user.username}}</h3>
+
+   <a href="{% url 'answer_question' %}">check details</a>
+  
+</div>
+{% endblock %}

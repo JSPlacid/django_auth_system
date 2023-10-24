@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Question:</h2>
+<ol>
+{% for entry in question_data %}
+  <li>
+    <p>{{ entry.question.text }}</p>
+    
+    <ul>
+        {% for option in entry.options %}
+        <li>
+            {{ option.text }}
+            {% if entry.user_selected_option == option.id %}
+            (selected)
+            {% endif %}
+
+            {% if entry.user_selected_option == entry.question.correct_answer.id %}
+            (correct_answer)
+            {% endif %}
+        </li>
+         {% endfor %}
+    </ul>
+  </li>
+{% endfor %}
+</ol>
+    <a href="{% url 'quiz_list' %}">Back to Quiz List</a>
+{% endblock %}

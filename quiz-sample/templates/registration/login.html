@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+
+   <div class="content-section">
+      <form method="POST">
+         {% csrf_token %}
+         <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Log in</legend>
+            {{form.as_p}}
+
+            <div class="form-group">
+               <button class="btn btn-outline-info" type="submit">login</button>
+            </div>
+         </fieldset>
+
+      </form>
+      <div class="border-top pt-3">
+         <small class="text-muted">
+            Need an account? <a class="ml-2" href="{% url 'register' %}">sign up Now</a>
+         </small>
+      </div>
+   </div>
+{% endblock %}

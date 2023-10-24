@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Quiz Complete</h1>
+    
+<p>Your Quiz Results:</p>
+
+<p>Your score: {{ score }} / {{ questions|length}}</p>
+
+{% if user_score_percentage is not None %}
+    <p>Percentage: {{ user_score_percentage }}%</p>
+{% endif %}
+
+{% if quiz_duration_seconds is not None %}
+    <p>Time Taken: {{ quiz_duration_seconds }} seconds</p>
+{% endif %}
+
+<a href="{% url 'quiz_list' %}">Back to Quiz List</a>
+
+
+{% endblock %}

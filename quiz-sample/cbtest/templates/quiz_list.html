@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<h2> {{ user.username}} </h2>
+<h2>Available Quizzes</h2>
+<ol>
+    {% for quiz in quizzes %}
+    <li><a href="{% url 'quiz_question' quiz.id %}">{{ quiz.title }}</a></li>
+    {% endfor %}
+</ol>
+{% endblock %}

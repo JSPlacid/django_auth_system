@@ -1,0 +1,9 @@
+<!-- <div class="">
+         {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}">profile</a>
+            <a href="{% url 'logout' %}">Log out</a>
+         {% else%}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+         {% endif %}
+      </div> -->
